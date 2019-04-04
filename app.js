@@ -58,4 +58,28 @@ class App extends Component{
 
 
 
+
+componentDidMount(){
+	fetch("https://still-garden-88285.herokuapp.com/draft_tweets")
+		.then(response=> response.json())
+		.then(
+			(result)=>{
+				console.log(result);
+				this.setState({
+					isLoaded:true,
+					tweets:result.draft_tweets
+				})
+			},
+			(error)=>{
+				this.setState({
+					isLoaded:true,
+					error:error
+				})
+			}
+		)
+}
+
+
+
+
 export default App;
